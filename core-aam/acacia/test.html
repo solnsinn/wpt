@@ -9,12 +9,12 @@
   <script>
     promise_test(async () => {
       const params = {
-          test_url: window.location.href,
+          title: document.title,
           id: 'test',
       };
       const url = 'resources/acacia.py?' + new URLSearchParams(params);
       console.log({url});
-      const response = await fetch(url);
+      const reponse = await fetch(url);
       console.log({response});
       const node = await response.json();
       console.log({node});
