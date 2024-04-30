@@ -11,7 +11,6 @@ kPoolingOperators.forEach((operatorName) => {
       operatorName, {dataType: 'float32', dimensions: [2, 2, 2, 2]});
 });
 
-
 const tests = [
   {
     name: 'Test pool2d with default options.',
@@ -273,3 +272,15 @@ tests.forEach(
         }
       });
     }, test.name));
+
+promise_test(async t => {
+  const input =
+      builder.input('input', {dataType: 'int64', dimensions: [1, 2, 3, 3]});
+  assert_throws_js(TypeError, () => builder.averagePool2d(input));
+}, '[averagePool2d] Throw if the input data type is not floating point');
+
+promise_test(async t => {
+  const input =
+      builder.input('input', {dataType: 'uint8', dimensions: [1, 2, 4, 4]});
+  assert_throws_js(TypeError, () => builder.l2Pool2d(input));
+}, '[l2Pool2d] Throw if the input data type is not floating point');
