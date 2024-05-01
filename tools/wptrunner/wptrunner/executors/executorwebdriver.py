@@ -223,7 +223,7 @@ class WebDriverPlatformAccessibilityProtocolPart(PlatformAccessibilityProtocolPa
     def setup(self):
         self.webdriver = self.parent.webdriver
 
-    def get_computed_label(self, id):
+    def get_accessibility_api_node(self, id):
         # Is this where the magic should happen?
         return "Test"
 

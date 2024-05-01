@@ -328,7 +328,7 @@ class PlatformAccessibilityProtocolPart(ProtocolPart):
     name = "platform_accessibility"
 
     @abstractmethod
-    def get_accessibility_api_node(self, id):
+    def get_accessibility_api_node(self, dom_id):
         """Return the the platform accessibilty object.
 
         :param id: DOM ID."""

@@ -474,9 +474,8 @@ class GetAccessibilityAPINodeAction:
         self.protocol = protocol
 
     def __call__(self, payload):
-        id = payload["id"]
-        self.logger.debug(f"Getting accessibility API node for: {id} ------------")
-        return self.protocol.platform_accessibility.get_accessibility_api_node(id)
+        dom_id = payload["dom_id"]
+        return self.protocol.platform_accessibility.get_accessibility_api_node(dom_id)
 
 
 actions = [ClickAction,
