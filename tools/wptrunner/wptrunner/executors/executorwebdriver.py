@@ -21,6 +21,7 @@ from .protocol import (BaseProtocolPart,
                        Protocol,
                        SelectorProtocolPart,
                        AccessibilityProtocolPart,
+                       PlatformAccessibilityProtocolPart,
                        ClickProtocolPart,
                        CookiesProtocolPart,
                        SendKeysProtocolPart,
@@ -215,6 +216,16 @@ class WebDriverAccessibilityProtocolPart(AccessibilityProtocolPart):
 
     def get_computed_role(self, element):
         return element.get_computed_role()
+
+
+# TODO: this is not actually a webdriver protocol, so, where to put it.. exactly?
+class WebDriverPlatformAccessibilityProtocolPart(PlatformAccessibilityProtocolPart):
+    def setup(self):
+        self.webdriver = self.parent.webdriver
+
+    def get_computed_label(self, id):
+        # Is this where the magic should happen?
+        return "Test"
 
 
 class WebDriverClickProtocolPart(ClickProtocolPart):
@@ -448,6 +459,7 @@ class WebDriverProtocol(Protocol):
                   WebDriverTestharnessProtocolPart,
                   WebDriverSelectorProtocolPart,
                   WebDriverAccessibilityProtocolPart,
+                  WebDriverPlatformAccessibilityProtocolPart,
                   WebDriverClickProtocolPart,
                   WebDriverCookiesProtocolPart,
                   WebDriverSendKeysProtocolPart,

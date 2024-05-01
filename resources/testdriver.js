@@ -1066,6 +1066,23 @@
          */
         clear_device_posture: function(context=null) {
             return window.test_driver_internal.clear_device_posture(context);
+        },
+
+        /**
+         * Get a serialized object representing the accessibility API's accessibility node.
+         *
+         * This matches the behaviour of the
+         * `Get Computed Label
+         * <https://w3c.github.io/webdriver/#dfn-get-computed-role>`_
+         * WebDriver command.
+         *
+         * @param {id}        id of element
+         * @returns {Promise} Fullfilled with object representing accessibilty node
+         *                    rejected in the cases of failures
+         */
+        get_accessibility_api_node: async function(id) {
+            let node = await window.test_driver_internal.get_accessibility_api_node(id);
+            return node;
         }
     };
 
@@ -1254,6 +1271,10 @@
 
         async clear_device_posture(context=null) {
             throw new Error("clear_device_posture() is not implemented by testdriver-vendor.js");
+        },
+
+        async get_accessibility_api_node(id) {
+          throw new Error("not implemented, whoops!");
         }
     };
 })();
